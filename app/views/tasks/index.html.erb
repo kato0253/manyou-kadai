@@ -1,19 +1,19 @@
-<h1><%= t('view.task_list')%></h1>
+<h1><%= t('task list')%></h1>
 <p><%= notice %></p>
 <table>
   <tr>
-    <th><%= t('view.task_name')%></th>
-    <th><%= t('view.detail')%></th>
+    <th><%= ('task_name')%></th>
+    <th><%= ('detail')%></th>
   </tr>
 <% @tasks.each do |task| %>
   <tr>
-    <td class="task_row"><%= task.name %></td>
+    <td class="task"><%= task.name %></td>
     <td><%= task.detail %></td>
-    <td><%= link_to ('details'), task_path(task.id) %></td>
-    <td><%= link_to ('edit'), edit_task_path(task.id) %></td>
-    <td><%= link_to ('delete'), task_path(task.id), method: :delete, data: { confirm: t('view.confirm') } %></td>
+    <td><%= link_to t('details'), task_path(task.id) %></td>
+    <td><%= link_to t('edit'), edit_task_path(task.id) %></td>
+    <td><%= link_to t('delete'), task_path(task.id), method: :delete, data: { confirm: t('view.confirm') } %></td>
   </tr>
 <% end %>
 </table>
 <br>
-<%= link_to t('view.new_create_task'), new_task_path %>
+<%= link_to t('new task'), new_task_path %>
