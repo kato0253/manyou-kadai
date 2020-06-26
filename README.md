@@ -1,8 +1,8 @@
-##tasks_table
+## tasks_table
 * name (string)  
 * detail (text)
 
-##deploy方法
+## deploy方法
 
 * heroku login herokuへログイン
 * git add .　herokuへadd
