@@ -1,6 +1,6 @@
 <%= form_with(model: @task, local: true) do |form| %>
   <% if @task.errors.any? %>
-    <div id="error ">
+    <div id="error">
       <h2><%= @task.errors.count %><%= ('error') %></h2>
       <ul>
         <% @task.errors.full_messages.each do |msg| %>
