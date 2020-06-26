@@ -12,7 +12,6 @@ RSpec.describe 'タスク管理機能', type: :model do
   it 'nameとdetailに内容が記載されていなければバリデーションが通る' do
     task = Task.new(name: '', detail: '')
     expect(task).not_to be_valid
-    expect(task.errors[:name]).to be_present
   end
 end
 
