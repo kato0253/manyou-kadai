@@ -9,4 +9,4 @@
 * git commit -m "init" herokuへcommit
 * heroku create 新リポジトリ作成　
 * git push heroku master herokuへpush
-* heroku run rails db:migrate heroku上へDB作成。
+* heroku run rails db:migrate heroku上へDB作成
