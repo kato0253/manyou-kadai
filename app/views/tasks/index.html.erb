@@ -1,19 +1,59 @@
-<h1><%= t('task list')%></h1>
+<h1><%= t('検索')%></h1>
 <p><%= notice %></p>
-<table>
-  <tr>
-    <th><%= ('task_name')%></th>
-    <th><%= ('detail')%></th>
-  </tr>
-<% @tasks.each do |task| %>
-  <tr>
-    <td class="task_row"><%= task.name %></td>
-    <td><%= task.detail %></td>
-    <td><%= link_to t('details'), task_path(task.id) %></td>
-    <td><%= link_to t('edit'), edit_task_path(task.id) %></td>
-    <td><%= link_to t('delete'), task_path(task.id), method: :delete, data: { confirm: t('view.confirm') } %></td>
-  </tr>
+
+<%= form_with url: tasks_path, method: :get, local: true do |form| %>
+  <div class="form-inline">
+      <%= form.label :name %>
+      <%= form.text_field :name, class:"form-control" %>
+  </div>
+      <%= form.label :Status %>
+      <%= form.select :status, [["完了","1"], ["着手中","2"], ["未着手","3"]], include_blank: "選択して下さい" , class:"caret" %>
+
+    <%= form.hidden_field :search, value: 'true' %>
+
+  <div class="form-inline">
+      <%= form.submit 'Search', class:"btn btn-default"%>
+  </div>
+
+
 <% end %>
+
+<%= link_to "終了期限sort", tasks_path(sort_expired: "true"), class:"btn btn-success" %>
+<%= link_to "優先順位sort", tasks_path(sort_priority: "true"), class:"btn btn-success" %>
+<%= link_to "reset", tasks_path, class:"btn btn-success" %>
+
+<div class="page-header">
+	<h1>一覧</h1>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>detail</th>
+      <th>End date</th>
+      <th>Priority</th>
+      <th>Status</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td class="task_row"><%= task.name %></td>
+        <td><%= task.detail %></td>
+        <td class="date_row"><%= task.end_date %></td>
+        <td class="priority_high"><%= task.priority %></td>
+        <td><%= task.status %></td>
+        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
+
+<%= paginate @tasks %>
 <br>
-<%= link_to t('new task'), new_task_path %>
+
+<%= link_to 'New Task', new_task_path, class:"btn btn-success"%>
