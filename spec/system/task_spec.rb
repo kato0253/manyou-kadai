@@ -6,10 +6,10 @@ RSpec.describe 'タスク管理機能', type: :system do
   end
 
   describe '優先順位並び替え' do
-    context '優先順位ソートをクリック' do
-      it '優先順位高順に並ぶ' do
+    context '優先順位ソートクリック' do
+      it '優先順位高順並び' do
         visit tasks_path
-        click_on '優先順位ソート'
+        click_on '優先順位sort'
           task_list = all('.priority_high')
           expect(task_list[0]).to have_content '高'
           expect(task_list[1]).to have_content '中'

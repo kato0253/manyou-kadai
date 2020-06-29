@@ -18,12 +18,12 @@
 
 <% end %>
 
-<%= link_to "終了期限ソートする", tasks_path(sort_expired: "true"), class:"btn btn-success" %>
-<%= link_to "優先順位ソート", tasks_path(sort_priority: "true"), class:"btn btn-success" %>
-<%= link_to "リセット", tasks_path, class:"btn btn-success" %>
+<%= link_to "終了期限sort", tasks_path(sort_expired: "true"), class:"btn btn-success" %>
+<%= link_to "優先順位sort", tasks_path(sort_priority: "true"), class:"btn btn-success" %>
+<%= link_to "reset", tasks_path, class:"btn btn-success" %>
 
 <div class="page-header">
-	<h1>タスク一覧</h1>
+	<h1>一覧</h1>
 </div>
 <table class="table">
   <thead>
