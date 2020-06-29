@@ -9,13 +9,29 @@
       </ul>
     </div>
   <% end %>
-  <div class="name">
+  <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
-  <div class="detail">
+  <div class="field">
     <%= form.label :detail %>
     <%= form.text_field :detail %>
+
+    <div class="field">
+    <%= form.label :end_date %>
+    <%= form.date_select :end_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :priority %>
+    <%= form.select :priority, [["高","高"], ["中","中"], ["低","低"]], include_blank: "選択して下さい" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, [["完了","完了"], ["着手中","着手中"], ["未着手","未着手"]], include_blank: "選択して下さい" %>
+  </div>
+
   </div>
   <%= form.submit %>
 <% end %>
