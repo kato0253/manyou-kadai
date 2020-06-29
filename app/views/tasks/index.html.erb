@@ -8,7 +8,7 @@
   </div>
       <%= form.label :Status %>
       <%= form.select :status, [["完了","1"], ["着手中","2"], ["未着手","3"]], include_blank: "選択して下さい" , class:"caret" %>
-  
+
     <%= form.hidden_field :search, value: 'true' %>
 
   <div class="form-inline">
@@ -18,8 +18,8 @@
 
 <% end %>
 
-<%= link_to "終了期限でソートする", tasks_path(sort_expired: "true"), class:"btn btn-success" %>
-<%= link_to "優先順位でソートする", tasks_path(sort_priority: "true"), class:"btn btn-success" %>
+<%= link_to "終了期限ソートする", tasks_path(sort_expired: "true"), class:"btn btn-success" %>
+<%= link_to "優先順位ソート", tasks_path(sort_priority: "true"), class:"btn btn-success" %>
 <%= link_to "リセット", tasks_path, class:"btn btn-success" %>
 
 <div class="page-header">
