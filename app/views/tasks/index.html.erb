@@ -3,34 +3,24 @@
 
 <%= form_with url: tasks_path, method: :get, local: true do |form| %>
   <div class="form-inline">
-    <div class="input-group">
-      <%= form.label :name, class:"input-group-addon" %>
+      <%= form.label :name %>
       <%= form.text_field :name, class:"form-control" %>
-    </div>
   </div>
-  <br>
-
-  <div class="form-inline">
-    <div class="input-group">
-      <%= form.label :Status, class:"input-group-addon" %>
+      <%= form.label :Status %>
       <%= form.select :status, [["完了","1"], ["着手中","2"], ["未着手","3"]], include_blank: "選択して下さい" , class:"caret" %>
-    </div>
-  </div>
-
+  
     <%= form.hidden_field :search, value: 'true' %>
 
-  <br>
   <div class="form-inline">
-    <div class="btn-group" >
       <%= form.submit 'Search', class:"btn btn-default"%>
-    </div>
   </div>
+
 
 <% end %>
 
-<%= link_to "終了期限でソートする", tasks_path(sort_expired: "true"), class:"btn btn-primary active" %>
-<%= link_to "優先順位でソートする", tasks_path(sort_priority: "true"), class:"btn btn-primary active" %>
-<%= link_to "リセット", tasks_path, class:"btn btn-primary active" %>
+<%= link_to "終了期限でソートする", tasks_path(sort_expired: "true"), class:"btn btn-success" %>
+<%= link_to "優先順位でソートする", tasks_path(sort_priority: "true"), class:"btn btn-success" %>
+<%= link_to "リセット", tasks_path, class:"btn btn-success" %>
 
 <div class="page-header">
 	<h1>タスク一覧</h1>
@@ -66,4 +56,4 @@
 <%= paginate @tasks %>
 <br>
 
-<%= link_to 'New Task', new_task_path, class:"btn btn-primary active"%>
+<%= link_to 'New Task', new_task_path, class:"btn btn-success"%>
