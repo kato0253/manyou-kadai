@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<h1>sign in</h1>
+
+<%= form_with(model: @user, local: true) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class:"form-control", id:"user_name"  %>
+  <%= f.label :email %>
+  <%= f.email_field :email, class:"form-control", id:"user_email"  %>
+  <%= f.label :password %>
+  <%= f.password_field :password, class:"form-control", id:"user_password"  %>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation, class:"form-control", id:"user_password_confirmation"  %>
+  <%= f.submit "sign up" %>
+<% end %>

@@ -9,5 +9,10 @@ class Task < ApplicationRecord
   scope :name_search,  -> (text_serach) {where("name LIKE ?", "%#{text_serach}%")}
   scope :status_search,  -> (text_serach) {where(status: text_serach)}
 
+  # def tasks
+  #   return Task.where(user.id: current_user.id)
+  # end
+
+  belongs_to :user
 
 end
