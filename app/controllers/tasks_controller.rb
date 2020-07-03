@@ -1,5 +1,4 @@
 class TasksController < ApplicationController
-  before_action :set, only: [:show, :edit, :update, :destroy]
   before_action :correct_user?
 
     def index
@@ -39,12 +38,18 @@ class TasksController < ApplicationController
     end
 
     def show
+      @task = Task.find(params[:id])
+
     end
 
     def edit
+      @task = Task.find(params[:id])
+
     end
 
     def update
+      @task = Task.find(params[:id])
+
       if @task.update(task_params)
         redirect_to tasks_path, notice: ('update')
       else
@@ -53,6 +58,8 @@ class TasksController < ApplicationController
     end
 
     def destroy
+      @task = Task.find(params[:id])
+
       @task.destroy
       redirect_to tasks_path, notice: ('destroy')
     end
@@ -62,7 +69,4 @@ class TasksController < ApplicationController
       params.require(:task).permit(:name, :detail, :end_date, :priority, :status, :user_id)
     end
 
-    def set
-      @task = Task.find(params[:id])
-    end
   end

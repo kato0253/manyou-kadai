@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
 
   def correct_user?
     unless logged_in?
-    redirect_to new_session_path, notice: "ログインして下さい"
-    # flash[:danger] = "権限無し"
+    redirect_to new_session_path, notice: "ログイン必要"
     end
   end
 

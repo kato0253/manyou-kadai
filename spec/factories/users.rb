@@ -10,7 +10,7 @@ FactoryBot.define do
     id { 2 }
     name { 'admin' }
     email { 'admin@example.com' }
-    password { '00000000' }
+    password { '11111111' }
     admin { true }
   end
 end
