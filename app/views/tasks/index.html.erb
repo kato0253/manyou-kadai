@@ -2,18 +2,17 @@
 <p><%= notice %></p>
 
 <%= form_with url: tasks_path, method: :get, local: true do |form| %>
-  <div>
-      <%= form.label :name %>
-      <%= form.text_field :name%>
-  </div>
-      <%= form.label :Status %>
-      <%= form.select :status, [["完了","1"], ["着手中","2"], ["未着手","3"]], include_blank: "選択して下さい" %>
+<div>
+  <%= form.label :name %>
+  <%= form.text_field :name%>
+</div>
+<%= form.label :Status %>
+<%= form.select :status, [["完了","1"], ["着手中","2"], ["未着手","3"]], include_blank: "選択して下さい" %>
+<%= form.hidden_field :search, value: 'true' %>
 
-    <%= form.hidden_field :search, value: 'true' %>
-
-  <div>
-      <%= form.submit 'Search'%>
-  </div>
+<div>
+  <%= form.submit 'Search'%>
+</div>
 
 
 <% end %>
@@ -23,7 +22,7 @@
 <%= link_to "reset", tasks_path%>
 
 <div class="page-header">
-	<h1>Index</h1>
+  <h1>Index</h1>
 </div>
 <table class="table">
   <thead>
@@ -39,16 +38,16 @@
 
   <tbody>
     <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.name %></td>
-        <td><%= task.detail %></td>
-        <td><%= task.end_date %></td>
-        <td><%= task.priority %></td>
-        <td><%= task.status %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= task.name %></td>
+      <td><%= task.detail %></td>
+      <td><%= task.end_date %></td>
+      <td><%= task.priority %></td>
+      <td><%= task.status %></td>
+      <td><%= link_to 'Show', task %></td>
+      <td><%= link_to 'Edit', edit_task_path(task) %></td>
+      <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>

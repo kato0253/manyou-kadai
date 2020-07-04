@@ -1,9 +1,9 @@
 <h2></h2>
 <%= link_to "new registration", new_admin_user_path  %>
 
-  <div class="task_table">
-    <table class="table table-striped">
-      <thead>
+<div class="task_table">
+  <table class="table table-striped">
+    <thead>
       <tr>
         <th scope="col">名前</th>
         <%# scope="col"同じ列（垂直方向）のセルを対象とする%>
@@ -12,31 +12,26 @@
         <th scope="col">作成日</th>
         <th scope="col">アップデート日</th>
         <th scope="col">タスク数</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
       </tr>
     </thead>
     <tbody class="admin_row">
       <% @users.each do |user| %>
-        <tr class="admin_narabi">
-          <td><%= user.name %> </td>
-          <td><%= user.email %></td>
-          <td><%= "権限有" if user.admin? %></td>
-          <td><%= user.created_at.strftime("%Y-%m-%d%H:%M") %></td>
-          <%# Time#strftimeは、Timeオブジェクトの表示形式を指定して文字列に変換します。%>
-          <td><%= user.updated_at.strftime("%Y-%m-%d%H:%M") %></td>
-          <td><%= user.tasks.count %> </td>
-          <td></td>
-          <td><%= link_to 'show', admin_user_path(user)%></td>
-          <td><%= link_to 'edit', edit_admin_user_path(user)%></td>
-          <td><%= link_to 'delete', [:admin, user], method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
-        </tr>
+      <tr class="admin_narabi">
+        <td><%= user.name %> </td>
+        <td><%= user.email %></td>
+        <td><%= "権限有" if user.admin? %></td>
+        <td><%= user.created_at.strftime("%Y-%m-%d%H:%M") %></td>
+        <%# Time#strftimeは、Timeオブジェクトの表示形式を指定して文字列に変換します。%>
+        <td><%= user.updated_at.strftime("%Y-%m-%d%H:%M") %></td>
+        <td><%= user.tasks.count %> </td>
+        <td></td>
+        <td><%= link_to 'show', admin_user_path(user)%></td>
+        <td><%= link_to 'edit', edit_admin_user_path(user)%></td>
+        <td><%= link_to 'delete', [:admin, user], method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+      </tr>
       <% end %>
     </tbody>
   </table>
-</div>
 </div>
 <%= paginate (@users) %>
 <%#View では paginate メソッドを使用して、ページング用のリンクを表示することができます。%>

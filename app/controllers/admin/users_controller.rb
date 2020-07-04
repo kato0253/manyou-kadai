@@ -1,7 +1,8 @@
 class Admin::UsersController < ApplicationController
-  before_action :admin_user, only: [:new, :index, :show, :edit, :update, :destroy]
+  # before_action :admin_user, only: [:new, :index, :show, :edit, :update, :destroy] ％iにより短く書ける
+  before_action :admin_user, only: %i[new index show edit update destroy]
 
-PER = 4
+  PER = 4
 
   def index
     @users = User.all.order(created_at:"DESC")
@@ -43,8 +44,8 @@ PER = 4
     @user = User.find(params[:id])
     if @user.destroy
       redirect_to admin_users_path, notice:"「#{@user.name}」削除"
-    else
-      redirect_to admin_users_path, notice:"「#{@user.name}」削除"
+      # else　４６〜４７行は削除失敗ケースが少ない為不要
+      #   redirect_to admin_users_path, notice:"「#{@user.name}」削除"
     end
   end
 

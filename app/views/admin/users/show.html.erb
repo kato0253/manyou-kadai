@@ -8,7 +8,7 @@
   <p>
     <strong>名前:</strong><%=@user.name %>
   </p>
-
+  
   <p>
     <strong>Email:</strong><%=@user.email %>
   </p>
@@ -38,10 +38,10 @@
 
       <tbody>
         <% @tasks.each do |task| %>
-          <tr class = "task_row">
-            <td><%= task.name %></td>
-            <td><%= task.detail %></td>
-          </tr>
+        <tr class = "task_row">
+          <td><%= task.name %></td>
+          <td><%= task.detail %></td>
+        </tr>
         <% end %>
       </tbody>
     </table>

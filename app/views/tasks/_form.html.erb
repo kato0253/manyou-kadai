@@ -1,23 +1,23 @@
 <%= form_with(model: @task, local: true) do |form| %>
-  <% if @task.errors.any? %>
-    <div id="error">
-      <h2><%= @task.errors.count %><%= ('error') %></h2>
-      <ul>
-        <% @task.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-  <div class="field">
-    <%= form.label :detail %>
-    <%= form.text_field :detail %>
+<% if @task.errors.any? %>
+<div id="error">
+  <h2><%= @task.errors.count %><%= ('error') %></h2>
+  <ul>
+    <% @task.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="field">
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+</div>
+<div class="field">
+  <%= form.label :detail %>
+  <%= form.text_field :detail %>
 
-    <div class="field">
+  <div class="field">
     <%= form.label :end_date %>
     <%= form.date_select :end_date %>
   </div>
@@ -32,6 +32,6 @@
     <%= form.select :status, [["完了","完了"], ["着手中","着手中"], ["未着手","未着手"]], include_blank: "選択して下さい" %>
   </div>
 
-  </div>
-  <%= form.submit %>
+</div>
+<%= form.submit %>
 <% end %>

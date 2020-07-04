@@ -1,4 +1,4 @@
-require 'rails_helper'
+# require 'rails_helper'
 
 # RSpec.describe 'scope検索', type: :model do
 #   context 'scopeメソッドで検索をした場合' do
