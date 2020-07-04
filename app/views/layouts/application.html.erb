@@ -14,11 +14,11 @@
     <%= link_to "log out", session_path(current_user.id), method: :delete %>
 
       <% if current_user && current_user.admin? %>
-      <%= link_to "log in by administrator", admin_users_path %>
+      <%= link_to "administrator", admin_users_path %>
       <% end %>
   <% else %>
     <%= link_to "Sign up", new_user_path %>
-    <%= link_to "Login", new_session_path %>
+    <%= link_to "Log in", new_session_path %>
   <% end %>
 
   <body>

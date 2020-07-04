@@ -84,7 +84,7 @@ RSpec.describe '​ユーザ登録・ログイン・ログアウト機能​・�
         fill_in "session_password", with: "11111111"
         click_on "log in"
         visit admin_users_path
-        expect(page).to have_content "管理画面"
+        expect(page).to have_content "new registration"
       end
     end
 
@@ -111,12 +111,12 @@ RSpec.describe '​ユーザ登録・ログイン・ログアウト機能​・�
       end
 
       it "管理者はユーザを新規登録できること" do
-        click_on "新規登録"
+        click_on "new registration"
         fill_in "user_name", with: "111"
         fill_in "user_email", with: "111@example.com"
         fill_in "user_password", with: "111111"
         fill_in "user_password_confirmation", with: "111111"
-        click_on "sign in"
+        click_on "sign up"
         expect(page).to have_content "111"
       end
 
@@ -133,16 +133,16 @@ RSpec.describe '​ユーザ登録・ログイン・ログアウト機能​・�
         fill_in 'user_email', with: 'sample2@example.com'
         fill_in 'user_password', with: '00000000'
         fill_in 'user_password_confirmation', with: '00000000'
-        click_button 'sign in'
+        click_button 'sign up'
         expect(page).to have_content "sample2"
       end
 
       it "管理者はユーザの削除をできること" do
         @user = FactoryBot.create(:user)
         visit admin_users_path
-        click_on "削除", match: :first
+        click_on "delete", match: :first
         page.driver.browser.switch_to.alert.accept
-        expect(page).to have_content "削除"
+        expect(page).to have_content "delete"
       end
     end
   end

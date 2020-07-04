@@ -1,5 +1,5 @@
-<h2>管理画面一覧</h2>
-<%= link_to "新規登録", new_admin_user_path  %>
+<h2></h2>
+<%= link_to "new registration", new_admin_user_path  %>
 
   <div class="task_table">
     <table class="table table-striped">
@@ -29,9 +29,9 @@
           <td><%= user.updated_at.strftime("%Y-%m-%d%H:%M") %></td>
           <td><%= user.tasks.count %> </td>
           <td></td>
-          <td><%= link_to '詳細', admin_user_path(user)%></td>
-          <td><%= link_to '編集', edit_admin_user_path(user)%></td>
-          <td><%= link_to '削除', [:admin, user], method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+          <td><%= link_to 'show', admin_user_path(user)%></td>
+          <td><%= link_to 'edit', edit_admin_user_path(user)%></td>
+          <td><%= link_to 'delete', [:admin, user], method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
         </tr>
       <% end %>
     </tbody>

@@ -1,4 +1,4 @@
-<h1><%= t('検索')%></h1>
+<h1><%= ('Search')%></h1>
 <p><%= notice %></p>
 
 <%= form_with url: tasks_path, method: :get, local: true do |form| %>
@@ -23,7 +23,7 @@
 <%= link_to "reset", tasks_path%>
 
 <div class="page-header">
-	<h1>一覧</h1>
+	<h1>Index</h1>
 </div>
 <table class="table">
   <thead>
@@ -57,5 +57,5 @@
 <br>
 
 <%# # <%= link_to 'New Task', new_task_path%>
-<%# <%= link_to "log out", session_path(current_user.id), method: :delete%> 
+<%# <%= link_to "log out", session_path(current_user.id), method: :delete%>
 <%# <%= link_to "Sign up", new_user_path%>
