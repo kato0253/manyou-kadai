@@ -6,6 +6,7 @@ FactoryBot.define do
     priority { '高' }
     status { '完了' }
   end
+  
   factory :second_task, class: Task do
     name { 'task2' }
     detail { 'detail2' }
