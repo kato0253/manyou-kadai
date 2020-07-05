@@ -1,16 +1,16 @@
 # パスワードは’’が無いとエラーが出る。user_spec.rbのパスワードを''を外し整数型に変更し対応させてもエラー。
 FactoryBot.define do
   factory :user do
-    # id { 3 }
+    id { 12 }
     name { 'sample' }
-    email { 'sampleA@example.com' }
+    email { 'sample@example.com' }
     password { '00000000' }
     admin { false }
   end
   factory :admin_user, class: User do
-    # id { 4 }
+    id { 13 }
     name { 'admin' }
-    email { 'adminA@example.com' }
+    email { 'admin@example.com' }
     password { '00000000' }
     admin { true }
   end
