@@ -1,7 +1,51 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# name = Faker::Games::Pokemon.name
+# email = Faker::Internet.email
+User.create!(
+             name: 'sample1',
+             email: 'sample1@example.com',
+             password: '00000000',
+             admin: true,
+            )
+
+priority_array=["高","中","低"]
+status_array=["未着手","着手中","完了"]
+
+
+detail = Faker::Games::Pokemon.name
+end_date = Faker::Date.between(from: 2.days.ago,to: Date.today)
+priority = priority_array[rand(3)]
+status = status_array[rand(3)]
+
+User.all.each do |user|
+user.tasks.create!(name: "#{user}",
+             detail: detail,
+             end_date: end_date,
+             priority: priority,
+             status: status,
+            )
+end
+
+User.create!(
+             name: 'sample2',
+             email: 'sample2@example.com',
+             password: '00000000',
+             admin: false,
+            )
+
+priority_array=["高","中","低"]
+status_array=["未着手","着手中","完了"]
+
+
+detail = Faker::Games::Pokemon.name
+end_date = Faker::Date.between(from: 2.days.ago,to: Date.today)
+priority = priority_array[rand(3)]
+status = status_array[rand(3)]
+
+User.all.each do |user|
+user.tasks.create!(name: "#{user}",
+             detail: detail,
+             end_date: end_date,
+             priority: priority,
+             status: status,
+            )
+end
