@@ -48,6 +48,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         select '高', from: 'task[priority]'
         select '未着手', from: 'task[status]'
         check "FactoryラベルA"
+        check "FactoryラベルB"
         click_on "Create Task"
         expect(page).to have_content 'AAA'
         expect(page).to have_content 'BBB'
@@ -55,7 +56,17 @@ RSpec.describe 'タスク管理機能', type: :system do
         expect(page).to have_content '未着手'
         expect(page).to have_content '高'
         expect(page).to have_content "FactoryラベルA"
+        expect(page).to have_content "FactoryラベルB"
       end
+    end
+  end
+
+  context 'ラベル検索' do
+    it '指定ラベルのみ表示' do
+      visit tasks_path
+      select 'FactoryラベルA', from: 'label_id'
+      click_on 'Search'
+      expect(page).to have_content 'FactoryラベルA'
     end
   end
 end
