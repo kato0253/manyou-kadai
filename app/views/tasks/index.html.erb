@@ -19,9 +19,9 @@
 </div>
 <% end %>
 
-<%# <%= link_to "終了期限sort", tasks_path(sort_expired: "true") %>
-<%# <%= link_to "優先順位sort", tasks_path(sort_priority: "true")%>
-<%= link_to "reset", tasks_path%>
+<%= link_to "終了期限sort", tasks_path(sort_expired: "true") %>
+<%= link_to "優先順位sort", tasks_path(sort_priority: "true") %>
+<%= link_to "reset", tasks_path %>
 
 <div class="page-header">
   <h1>Index</h1>
@@ -43,7 +43,7 @@
     <% @tasks.each do |task| %>
     <tr>
       <td><%= task.name %></td>
-      <td><%= task.detail %></td>
+      <td class="task_row"><%= task.detail %></td>
       <td><%= task.end_date %></td>
       <td><%= task.priority %></td>
       <td><%= task.status %></td>

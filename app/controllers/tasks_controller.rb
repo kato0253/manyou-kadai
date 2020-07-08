@@ -5,13 +5,13 @@ class TasksController < ApplicationController
     @tasks = current_user.tasks.all.page(params[:page]).per(5)
     @labels = current_user.tasks.all.joins(:labels).where(labels: { id: params[:label_id] })
 
-    # if params[:sort_expired]
-    #   @tasks=@tasks.order(end_date: :desc)
-    # end
-    #
-    # if params[:sort_priority]
-    #   @tasks=@tasks.order(priority: :asc)
-    # end
+    if params[:sort_expired]
+      @tasks = @tasks.order(end_date: :desc)
+    elsif params[:sort_priority]
+      @tasks = @tasks. order(priority: :asc)
+    else
+      @tasks = @tasks.order(created_at: :desc)
+    end
 
     if params[:name].present?
       @tasks=@tasks.name_search params[:name]
@@ -27,7 +27,7 @@ class TasksController < ApplicationController
     end
 end
 
-  def new
+def new
     @task = Task.new
   end
 
