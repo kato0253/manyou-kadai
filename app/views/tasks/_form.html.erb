@@ -9,6 +9,7 @@
   </ul>
 </div>
 <% end %>
+
 <div class="field">
   <%= form.label :name %>
   <%= form.text_field :name %>
@@ -31,6 +32,15 @@
     <%= form.label :status %>
     <%= form.select :status, [["完了","完了"], ["着手中","着手中"], ["未着手","未着手"]], include_blank: "選択して下さい" %>
   </div>
+
+  <div class="field">
+    <%= form.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
+  </div>
+
+  <%# <% Label.all.each do |label| %>
+  <%# <%= f.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %> %>
+  <%# <%= label.name %> 
+  <%# <% end %>
 
 </div>
 <%= form.submit %>

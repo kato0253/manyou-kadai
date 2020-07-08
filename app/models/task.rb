@@ -10,5 +10,7 @@ class Task < ApplicationRecord
   scope :status_search,  -> (text) {where(status: text)}
 
   belongs_to :user
+  has_many :labellings, dependent: :destroy
+  has_many :labels, through: :labellings
 
 end
