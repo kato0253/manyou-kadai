@@ -2,26 +2,30 @@ class TasksController < ApplicationController
   before_action :correct_user
 
   def index
-    @tasks = current_user.tasks.all
+    @tasks = current_user.tasks.all.page(params[:page]).per(5)
+    @labels = current_user.tasks.all.joins(:labels).where(labels: { id: params[:label_id] })
 
-    if params[:sort_expired]
-      @tasks = current_user.tasks.order(end_date: "DESC").page(params[:page]).per(2)
-    elsif params[:sort_priority]
-      @tasks = current_user.tasks.order(priority: "ASC").page(params[:page]).per(2)
-    elsif
-      @tasks = current_user.tasks.order(created_at: "DESC").page(params[:page]).per(2)
+    # if params[:sort_expired]
+    #   @tasks=@tasks.order(end_date: :desc)
+    # end
+    #
+    # if params[:sort_priority]
+    #   @tasks=@tasks.order(priority: :asc)
+    # end
+
+    if params[:name].present?
+      @tasks=@tasks.name_search params[:name]
+    end
+    if params[:status].present?
+      @tasks=@tasks.status_search params[:status]
     end
 
-    if params[:search].present?
-      if params[:name].present? && params[:status].present?
-        @tasks = current_user.tasks.name_search(params[:name]).status_search(params[:status]).page(params[:page]).per(2)
-      elsif params[:name].present?
-        @tasks = current_user.tasks.name_search(params[:name]).page(params[:page]).per(2)
-      elsif params[:status].present?
-        @tasks = current_user.tasks.status_search(params[:status]).page(params[:page]).per(2)
-      end
+    if params[:label_id].present?
+      @labellings=Labelling.where(label_id: params[:label_id]).pluck(:task_id)
+      #Labellingモデル内に.where(抽出条件指定、ラベルIDカラム内に送られて来たラベルIDと一致するIDが無いか調べる).pluck（意味つまむ：抽出データを絞る役割、タスクIDで絞ってる）
+      @tasks=@tasks.where(id: @labellings)
     end
-  end
+end
 
   def new
     @task = Task.new
@@ -65,9 +69,9 @@ class TasksController < ApplicationController
   end
 
   private
-  
+
   def task_params
-    params.require(:task).permit(:name, :detail, :end_date, :priority, :status, :user_id)
+    params.require(:task).permit(:name, :detail, :end_date, :priority, :status, :user_id, { label_ids: [] })
   end
 
 end

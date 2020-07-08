@@ -6,19 +6,21 @@
   <%= form.label :name %>
   <%= form.text_field :name%>
 </div>
+<div>
 <%= form.label :Status %>
 <%= form.select :status, [["完了","1"], ["着手中","2"], ["未着手","3"]], include_blank: "選択して下さい" %>
 <%= form.hidden_field :search, value: 'true' %>
-
+</div>
+<div>
+<%= form.select("label_id", Label.pluck(:name, :id), { include_blank: true }) %>
+</div>
 <div>
   <%= form.submit 'Search'%>
 </div>
-
-
 <% end %>
 
-<%= link_to "終了期限sort", tasks_path(sort_expired: "true") %>
-<%= link_to "優先順位sort", tasks_path(sort_priority: "true")%>
+<%# <%= link_to "終了期限sort", tasks_path(sort_expired: "true") %>
+<%# <%= link_to "優先順位sort", tasks_path(sort_priority: "true")%>
 <%= link_to "reset", tasks_path%>
 
 <div class="page-header">
@@ -32,6 +34,7 @@
       <th>End date</th>
       <th>Priority</th>
       <th>Status</th>
+      <th>Label</th>
       <th colspan="5"></th>
     </tr>
   </thead>
@@ -44,6 +47,11 @@
       <td><%= task.end_date %></td>
       <td><%= task.priority %></td>
       <td><%= task.status %></td>
+      <td>
+        <% task.labels.each do |label| %>
+        <%= label.name %>
+        <% end %>
+      </td>
       <td><%= link_to 'Show', task %></td>
       <td><%= link_to 'Edit', edit_task_path(task) %></td>
       <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -54,7 +62,3 @@
 
 <%= paginate @tasks %>
 <br>
-
-<%# # <%= link_to 'New Task', new_task_path%>
-<%# <%= link_to "log out", session_path(current_user.id), method: :delete%>
-<%# <%= link_to "Sign up", new_user_path%>

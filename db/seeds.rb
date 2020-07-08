@@ -25,6 +25,10 @@ user.tasks.create!(name: "#{user}",
             )
 end
 
+Label.create!(name: 'A')
+Label.create!(name: 'B')
+Label.create!(name: 'C')
+
 User.create!(
              name: 'sample2',
              email: 'sample2@example.com',
